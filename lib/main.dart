@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-main() => runApp(PerguntaApp());
+main() => runApp(const PerguntaApp());
 
-class PerguntaApp extends StatelessWidget {
-  PerguntaApp({super.key});
+//statelesswidget's must don't have var statements!!
+class PerguntaApp extends StatefulWidget {
+  const PerguntaApp({super.key});
+
+  @override
+  State<PerguntaApp> createState() => _PerguntaAppState();
+}
+
+class _PerguntaAppState extends State<PerguntaApp> {
+  var selectedanswer = 0;
 
   void answer() {
-    print('it\'s answered!');
+    selectedanswer++;
+    print(selectedanswer);
   }
 
   @override
@@ -21,23 +29,23 @@ class PerguntaApp extends StatelessWidget {
         //here we got the named parameters
         home: Scaffold(
             appBar: AppBar(
-              title: Text('Questions'),
-              backgroundColor: Color.fromARGB(210, 34, 117, 31),
+              title: const Text('Questions'),
+              backgroundColor: const Color.fromARGB(210, 0, 0, 0),
             ),
             body: Column(
               children: [
                 Text(questions[0]),
                 ElevatedButton(
-                  child: Text('blue'),
                   onPressed: answer,
+                  child: const Text('blue'),
                 ),
                 ElevatedButton(
-                  child: Text('yellow'),
                   onPressed: answer,
+                  child: const Text('yellow'),
                 ),
                 ElevatedButton(
-                  child: Text('red'),
                   onPressed: answer,
+                  child: const Text('red'),
                 ),
               ],
             )));

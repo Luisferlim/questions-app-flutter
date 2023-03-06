@@ -1,26 +1,20 @@
 import 'package:flutter/material.dart';
 
-main() => runApp(const PerguntaApp());
+void main() => runApp(const PerguntaApp());
 
-//statelesswidget's must don't have var statements!!
-class PerguntaApp extends StatefulWidget {
-  const PerguntaApp({super.key});
-
-  @override
-  State<PerguntaApp> createState() => _PerguntaAppState();
-}
-
+//the _ before classes and var's mean basically private'
 class _PerguntaAppState extends State<PerguntaApp> {
-  var selectedanswer = 0;
+  var _selectedanswer = 0;
 
-  void answer() {
-    selectedanswer++;
-    print(selectedanswer);
+  void _answer() {
+    setState(() {
+      _selectedanswer++;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    const questions = [
+    final questions = [
       'what\'s your favorite color?',
       'which of those do you prefer?',
     ];
@@ -34,20 +28,28 @@ class _PerguntaAppState extends State<PerguntaApp> {
             ),
             body: Column(
               children: [
-                Text(questions[0]),
+                Text(questions[_selectedanswer]),
                 ElevatedButton(
-                  onPressed: answer,
-                  child: const Text('blue'),
+                  onPressed: _answer,
+                  child: const Text('answer 1'),
                 ),
                 ElevatedButton(
-                  onPressed: answer,
-                  child: const Text('yellow'),
+                  onPressed: _answer,
+                  child: const Text('answer 2'),
                 ),
                 ElevatedButton(
-                  onPressed: answer,
-                  child: const Text('red'),
+                  onPressed: _answer,
+                  child: const Text('answer 3'),
                 ),
               ],
             )));
   }
+}
+
+//statelesswidget's must don't have var statements!!
+class PerguntaApp extends StatefulWidget {
+  const PerguntaApp({super.key});
+
+  @override
+  State<PerguntaApp> createState() => _PerguntaAppState();
 }

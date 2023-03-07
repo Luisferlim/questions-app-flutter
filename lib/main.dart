@@ -17,20 +17,30 @@ class _PerguntaAppState extends State<PerguntaApp> {
   @override
   Widget build(BuildContext context) {
     final questions = [
-      'what\'s your favorite color?',
-      'which of those animals do you prefer?',
+      {
+        'text': 'what\'s your favorite color?',
+        'answers': ['yellow', 'red', 'blue', 'green'],
+      },
+      {
+        'text': 'which of those is your favorite animal?',
+        'answers': ['capybara', 'cat', 'fox', 'dog'],
+      },
+      {
+        'text': 'which of those is your favorite car?',
+        'answers': ['Monza', 'Supra', 'Beetle', 'Tesla model s'],
+      },
     ];
 
     return MaterialApp(
         //here we got the named parameters
         home: Scaffold(
             appBar: AppBar(
-              title: const Text('Questions'),
+              title: const Center(child: Text('Questions')),
               backgroundColor: Colors.blueAccent,
             ),
             body: Column(
               children: [
-                Question(questions[_selectedanswer]),
+                Question(questions[_selectedanswer]['text'] as String),
                 Answer('answer 1', _answer),
                 Answer('answer 2', _answer),
                 Answer('answer 3', _answer),

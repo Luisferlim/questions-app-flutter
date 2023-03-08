@@ -1,6 +1,7 @@
 # Questions app
 
-A new Flutter project.
+A new Flutter project who's receive an answer through the buttons and update the ui for the next question.
+This is my First App made for be a complement of my study.
 
 ## Getting Started
 

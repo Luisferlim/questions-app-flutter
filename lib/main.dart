@@ -6,11 +6,11 @@ void main() => runApp(const PerguntaApp());
 
 //the _ before classes and var's mean basically private'
 class _PerguntaAppState extends State<PerguntaApp> {
-  var _selectedanswer = 0;
+  var _selectedquestion = 0;
 
   void _answer() {
     setState(() {
-      _selectedanswer++;
+      _selectedquestion++;
     });
   }
 
@@ -31,6 +31,12 @@ class _PerguntaAppState extends State<PerguntaApp> {
       },
     ];
 
+    List<Widget> answers = [];
+
+    for (String answertext in questions[_selectedquestion]['answers'] as List) {
+      answers.add(Answer(answertext, _answer));
+    }
+
     return MaterialApp(
         //here we got the named parameters
         home: Scaffold(
@@ -40,10 +46,8 @@ class _PerguntaAppState extends State<PerguntaApp> {
             ),
             body: Column(
               children: [
-                Question(questions[_selectedanswer]['text'] as String),
-                Answer('answer 1', _answer),
-                Answer('answer 2', _answer),
-                Answer('answer 3', _answer),
+                Question(questions[_selectedquestion]['text'] as String),
+                ...answers,
               ],
             )));
   }
